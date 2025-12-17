@@ -1,0 +1,16 @@
+# Telegram Bot
+aiogram==3.3.0
+aiohttp==3.9.1
+
+# База данных (общая с backend)
+sqlalchemy==2.0.25
+asyncpg==0.29.0
+psycopg2-binary==2.9.9
+
+# Конфигурация
+python-dotenv==1.0.0
+pydantic==2.5.3
+pydantic-settings==2.1.0
+
+# Утилиты
+python-dateutil==2.8.2
