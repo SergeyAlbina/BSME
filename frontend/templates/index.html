@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Helpdesk - Система управления заявками</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Login Screen -->
+        <div id="login-screen" class="screen">
+            <div class="login-container">
+                <h1>🔧 IT Helpdesk</h1>
+                <p>Система управления заявками</p>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">Имя пользователя</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Пароль</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Войти</button>
+                    <div id="login-error" class="error-message" style="display: none;"></div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Main Dashboard -->
+        <div id="dashboard-screen" class="screen" style="display: none;">
+            <nav class="navbar">
+                <div class="navbar-brand">
+                    <h2>🔧 IT Helpdesk</h2>
+                </div>
+                <div class="navbar-user">
+                    <span id="user-name">Пользователь</span>
+                    <button id="logout-btn" class="btn btn-secondary">Выйти</button>
+                </div>
+            </nav>
+
+            <div class="container">
+                <div class="sidebar">
+                    <ul class="nav-menu">
+                        <li class="nav-item active" data-view="tickets">
+                            📋 Все заявки
+                        </li>
+                        <li class="nav-item" data-view="my-tickets">
+                            👤 Мои заявки
+                        </li>
+                        <li class="nav-item" data-view="assigned">
+                            ✅ Назначенные мне
+                        </li>
+                        <li class="nav-item" data-view="stats">
+                            📊 Статистика
+                        </li>
+                    </ul>
+
+                    <div class="filters">
+                        <h3>Фильтры</h3>
+                        <div class="filter-group">
+                            <label>Статус</label>
+                            <select id="filter-status">
+                                <option value="">Все</option>
+                                <option value="new">Новые</option>
+                                <option value="in_progress">В работе</option>
+                                <option value="resolved">Решенные</option>
+                                <option value="closed">Закрытые</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Приоритет</label>
+                            <select id="filter-priority">
+                                <option value="">Все</option>
+                                <option value="critical">Критический</option>
+                                <option value="high">Высокий</option>
+                                <option value="medium">Средний</option>
+                                <option value="low">Низкий</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Категория</label>
+                            <select id="filter-category">
+                                <option value="">Все</option>
+                                <option value="hardware">Оборудование</option>
+                                <option value="software">ПО</option>
+                            </select>
+                        </div>
+                        <button id="apply-filters" class="btn btn-primary btn-block">Применить</button>
+                        <button id="reset-filters" class="btn btn-secondary btn-block">Сбросить</button>
+                    </div>
+                </div>
+
+                <div class="main-content">
+                    <div class="content-header">
+                        <h2 id="content-title">Все заявки</h2>
+                        <button id="create-ticket-btn" class="btn btn-primary" style="display: none;">
+                            + Создать заявку
+                        </button>
+                    </div>
+
+                    <div id="tickets-list" class="tickets-list">
+                        <div class="loading">Загрузка...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ticket Detail Modal -->
+        <div id="ticket-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="ticket-detail">
+                    <!-- Ticket details will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
